@@ -1,0 +1,135 @@
+/* Chomsky Diagram Styling */
+.diagram-container {
+  width: 100%;
+  padding: var(--spacing-lg) 0;
+}
+
+.nested-diagram {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.layer {
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Align to bottom visually as circles overlap */
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px dashed rgba(255,255,255,0.2);
+  background: var(--glass-bg);
+  backdrop-filter: blur(4px);
+  position: relative;
+}
+
+.layer:hover {
+  border-style: solid;
+}
+
+.layer.active {
+  border-style: solid;
+  border-width: 3px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.1) inset;
+}
+
+/* Layer specific sizing and colors */
+.layer-type0 {
+  width: 100%;
+  height: 100%;
+  border-color: rgba(236, 72, 153, 0.3);
+}
+.layer-type0.active, .layer-type0:hover { border-color: var(--color-type0); box-shadow: 0 0 20px rgba(236, 72, 153, 0.3); }
+
+.layer-type1 {
+  width: 75%;
+  height: 75%;
+  border-color: rgba(168, 85, 247, 0.3);
+  margin-bottom: 5%;
+}
+.layer-type1.active, .layer-type1:hover { border-color: var(--color-type1); box-shadow: 0 0 20px rgba(168, 85, 247, 0.3); }
+
+.layer-type2 {
+  width: 70%;
+  height: 70%;
+  border-color: rgba(59, 130, 246, 0.3);
+  margin-bottom: 5%;
+}
+.layer-type2.active, .layer-type2:hover { border-color: var(--color-type2); box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+
+.layer-type3 {
+  width: 65%;
+  height: 65%;
+  border-color: rgba(20, 184, 166, 0.3);
+  justify-content: center;
+  margin-bottom: 8%;
+}
+.layer-type3.active, .layer-type3:hover { border-color: var(--color-type3); box-shadow: 0 0 20px rgba(20, 184, 166, 0.3); }
+
+.layer-label {
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 20px;
+  position: absolute;
+  top: 8%;
+  pointer-events: none;
+}
+
+/* Info Cards Styling */
+.info-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+}
+
+.info-card.type0::before { background-color: var(--color-type0); box-shadow: 0 0 10px var(--color-type0); }
+.info-card.type1::before { background-color: var(--color-type1); box-shadow: 0 0 10px var(--color-type1); }
+.info-card.type2::before { background-color: var(--color-type2); box-shadow: 0 0 10px var(--color-type2); }
+.info-card.type3::before { background-color: var(--color-type3); box-shadow: 0 0 10px var(--color-type3); }
+
+.metric-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.examples-list {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--spacing-sm);
+}
+
+.examples-list li {
+  padding: 10px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-family: var(--font-geist-mono), monospace; /* Code font */
+  font-size: 0.9rem;
+  border-left: 2px solid rgba(255,255,255,0.2);
+}
